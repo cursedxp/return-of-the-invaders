@@ -1,6 +1,6 @@
 class Invader {
   constructor({ position }) {
-    //Player image
+    //Invader image
     const image = new Image();
     image.src = "img/purple_03.png";
 
@@ -9,14 +9,14 @@ class Invader {
       this.image = image;
       this.image.width = 48;
       this.image.height = 48;
+      //Default postion of the invader on canvas
       this.position = {
-        //Default postion of the ship on canvas
         x: position.x,
         y: position.y,
       };
     };
-    //Default position of the player
-    //Speed of the sapceship
+
+    //Speed of the invader
     this.speed = {
       x: 0,
       y: 0,

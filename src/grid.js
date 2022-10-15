@@ -13,9 +13,9 @@ class Grid {
     this.width = 12 * 56;
 
     //Create column of invaders
-    for (let i = 0; i < 12; i++) {
+    for (let i = 0; i < 3; i++) {
       //Create row
-      for (let j = 0; j < 3; j++) {
+      for (let j = 0; j < 1; j++) {
         this.invaders.push(new Invader({ position: { x: i * 56, y: j * 56 } }));
       }
     }
@@ -26,7 +26,7 @@ class Grid {
 
     this.speed.y = 0;
 
-    //Limit the invader tiles moves on canvas x axess
+    //Limit the invader tiles moves on canvas x access
     if (this.position.x + this.width >= canvas.width || this.position.x <= 0) {
       this.speed.x = -this.speed.x;
       //Go down one line if the grid reaches end of the screen

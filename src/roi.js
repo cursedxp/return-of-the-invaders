@@ -24,8 +24,10 @@ function runAllAnimations() {
   //Draw Space
   context.fillStyle = "black";
   context.fillRect(0, 0, canvas.width, canvas.height);
+
   //Create Player and update it
   player.update();
+
   //Add missiles to canvas and update postions
   missiles.forEach((missile, index) => {
     //Cean up the missiles to increase performance
@@ -39,10 +41,42 @@ function runAllAnimations() {
   //place the grid of invaders
   grids.forEach((grid) => {
     grid.update();
-    grid.invaders.forEach((invader) => {
+    grid.invaders.forEach((invader, index) => {
       invader.update({ speed: grid.speed });
+
+      //Shoot the invaders
+      missiles.forEach((missile, mindex) => {
+        if (collision(invader, missile)) {
+          console.log("Another log");
+        }
+      });
     });
   });
+}
+
+function collision(invader, missile) {
+  //console.log(invader.position.x, missile.position.x);
+  console.log(invader.position.y, missile.position.y);
+  return (
+    missile.position.x >= invader.position.x &&
+    missile.position.x < invader.position.x + invader.image.width
+    // &&
+    // missile.position.y >= invader.position.y + 3
+  );
+  // if (
+  //   // missile.position.y < invader.position.y + invader.height &&
+  //   // missile.position.y >= invader.position.y
+  //   missile.position.y < invader.position.y + invader.height ||
+  //   missile.position.x < invader.position.x + invader.width ||
+  //   invader.position.x - invader.width < missile.x
+  // ) {
+  //   console.log("Hey");
+  // }
+
+  // setTimeout(() => {
+  //   grid.invaders.splice(index, 1);
+  //   missiles.splice(mindex, 1);
+  // }, 0);
 }
 
 runAllAnimations();
