@@ -46,9 +46,31 @@ function runAllAnimations() {
 
       //Shoot the invaders
       missiles.forEach((missile, mindex) => {
-        if (collision(invader, missile)) {
-          console.log("Another log");
+        // let invaderHeight = invader.position.y + invader.image.height;
+        // let missileRightLine = missile.position.x + missile.radius;
+        // let missileTopline = missile.position.y - missile.radius;
+
+        if (
+          missile.position.y - missile.radius <=
+            invader.position.y + invader.image.height &&
+          missile.position.x + missile.radius >= invader.position.x &&
+          missile.position.x - missile.radius <= invader.position.x &&
+          missile.position.y + missile.radius >= invader.position.y
+        ) {
+          setTimeout(() => {
+            const invaderFind = grid.invaders.find((invader2) => {
+              return invader2 === invader;
+            });
+            if (invaderFind) {
+              grid.invaders.splice(index, 1);
+              missiles.splice(mindex, 1);
+            }
+          }, 0);
         }
+
+        // if (collision(invader, missile)) {
+        //   console.log("Another log");
+        // }
       });
     });
   });
@@ -56,13 +78,18 @@ function runAllAnimations() {
 
 function collision(invader, missile) {
   //console.log(invader.position.x, missile.position.x);
-  console.log(invader.position.y, missile.position.y);
-  return (
-    missile.position.x >= invader.position.x &&
-    missile.position.x < invader.position.x + invader.image.width
-    // &&
-    // missile.position.y >= invader.position.y + 3
-  );
+  // if (
+  //   missileTopline <= invaderBottomLine &&
+  //   missile.position.y == invader.position.y
+  // ) {
+  //   console.log("You Shoot the invader");
+  // }
+  // return (
+  //   missile.position.x >= invader.position.x &&
+  //   missile.position.x < invader.position.x + invader.image.width
+  //   // &&
+  //   // missile.position.y >= invader.position.y + 3
+  // );
   // if (
   //   // missile.position.y < invader.position.y + invader.height &&
   //   // missile.position.y >= invader.position.y
@@ -72,7 +99,6 @@ function collision(invader, missile) {
   // ) {
   //   console.log("Hey");
   // }
-
   // setTimeout(() => {
   //   grid.invaders.splice(index, 1);
   //   missiles.splice(mindex, 1);
@@ -97,7 +123,7 @@ window.addEventListener("keydown", (e) => {
             x: player.position.x + player.image.width / 2,
             y: player.position.y,
           },
-          speed: { x: 0, y: -10 },
+          speed: { x: 0, y: -20 },
         })
       );
 

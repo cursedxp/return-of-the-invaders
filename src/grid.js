@@ -13,9 +13,9 @@ class Grid {
     this.width = 12 * 56;
 
     //Create column of invaders
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 12; i++) {
       //Create row
-      for (let j = 0; j < 1; j++) {
+      for (let j = 0; j < 3; j++) {
         this.invaders.push(new Invader({ position: { x: i * 56, y: j * 56 } }));
       }
     }
