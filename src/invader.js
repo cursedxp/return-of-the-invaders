@@ -36,4 +36,22 @@ class Invader {
       this.position.y += speed.y;
     }
   }
+
+  shoot(invaderMissiles) {
+    //console.log(this.position.x);
+    if (this.position) {
+      invaderMissiles.push(
+        new InvaderMissiles({
+          position: {
+            x: this.position.x + this.image.width / 2,
+            y: this.position.y + this.image.height,
+          },
+          speed: {
+            x: 0,
+            y: 5,
+          },
+        })
+      );
+    }
+  }
 }

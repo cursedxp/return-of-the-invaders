@@ -17,6 +17,9 @@ canvas.height = window.innerHeight;
 const player = new Player();
 const missiles = [];
 const grids = [new Grid()];
+const invaderMissiles = [];
+
+let frames = 0;
 
 //Animations
 function runAllAnimations() {
@@ -27,6 +30,11 @@ function runAllAnimations() {
 
   //Create Player and update it
   player.update();
+
+  //add invader misiles
+  invaderMissiles.forEach((invaderMissile) => {
+    invaderMissile.update();
+  });
 
   //Add missiles to canvas and update postions
   missiles.forEach((missile, index) => {
@@ -39,17 +47,24 @@ function runAllAnimations() {
   });
 
   //place the grid of invaders
+
   grids.forEach((grid) => {
     grid.update();
+    //console.log(grid.invaders[0]);
+    //fire misiles
+    if (frames % 100 === 0 && grid.invaders.length > 0) {
+      //console.log("hey");
+      grid.invaders[Math.floor(Math.random() * grid.invaders.length)].shoot(
+        invaderMissiles
+      );
+    }
+
     grid.invaders.forEach((invader, index) => {
+      //console.log(invader.position.x);
       invader.update({ speed: grid.speed });
-
       //Shoot the invaders
+      //I need to make some adjustments
       missiles.forEach((missile, mindex) => {
-        // let invaderHeight = invader.position.y + invader.image.height;
-        // let missileRightLine = missile.position.x + missile.radius;
-        // let missileTopline = missile.position.y - missile.radius;
-
         if (
           missile.position.y - missile.radius <=
             invader.position.y + invader.image.height &&
@@ -67,42 +82,11 @@ function runAllAnimations() {
             }
           }, 0);
         }
-
-        // if (collision(invader, missile)) {
-        //   console.log("Another log");
-        // }
       });
     });
   });
-}
 
-function collision(invader, missile) {
-  //console.log(invader.position.x, missile.position.x);
-  // if (
-  //   missileTopline <= invaderBottomLine &&
-  //   missile.position.y == invader.position.y
-  // ) {
-  //   console.log("You Shoot the invader");
-  // }
-  // return (
-  //   missile.position.x >= invader.position.x &&
-  //   missile.position.x < invader.position.x + invader.image.width
-  //   // &&
-  //   // missile.position.y >= invader.position.y + 3
-  // );
-  // if (
-  //   // missile.position.y < invader.position.y + invader.height &&
-  //   // missile.position.y >= invader.position.y
-  //   missile.position.y < invader.position.y + invader.height ||
-  //   missile.position.x < invader.position.x + invader.width ||
-  //   invader.position.x - invader.width < missile.x
-  // ) {
-  //   console.log("Hey");
-  // }
-  // setTimeout(() => {
-  //   grid.invaders.splice(index, 1);
-  //   missiles.splice(mindex, 1);
-  // }, 0);
+  frames++;
 }
 
 runAllAnimations();
