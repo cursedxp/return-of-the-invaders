@@ -21,13 +21,17 @@ class Player {
       x: 0,
       y: 0,
     };
+    this.opacity = 1;
   }
 
   //Draw player on canvas
   draw() {
+    context.save();
+    context.globalAlpha = this.opacity;
     if (this.image) {
       context.drawImage(this.image, this.position.x, this.position.y);
     }
+    context.restore();
   }
 
   update() {

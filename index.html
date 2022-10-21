@@ -8,9 +8,29 @@
     <title>Document</title>
   </head>
   <body>
-    <canvas id="gameBoard"></canvas>
+    <div class="home">
+      <span class="gameTitle"> Return of the invaders </span>
 
+      <form action="">
+        <label for="">Please enter your name</label>
+        <input type="text" id="playerName" />
+        <button id="start">Start</button>
+      </form>
+      <p class="gameInfo">
+        Commander! Use the keyboard arrow keys to move left and right. Use the
+        space bar key to shoot the invaders. It may seam easy but it is not.<br />
+        Good luck Commender.
+      </p>
+    </div>
+    <div class="game">
+      <div class="scoreboard">
+        <p class="score">Socre:<span id="gameScore">0</span></p>
+        <p class="player">Player:<span id="currentPlayerName"></span></p>
+      </div>
+      <canvas id="gameBoard"></canvas>
+    </div>
     <script src="/src/player.js"></script>
+    <script src="/src/particle.js"></script>
     <script src="/src/invaderMissiles.js"></script>
     <script src="/src/invader.js"></script>
     <script src="/src/grid.js"></script>

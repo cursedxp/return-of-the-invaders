@@ -3,7 +3,7 @@ class InvaderMissiles {
     this.position = position;
     this.speed = speed;
     this.width = 3;
-    this.height = 6;
+    this.height = 10;
   }
   draw() {
     //console.log(this.position);
