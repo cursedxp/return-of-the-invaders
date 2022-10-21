@@ -1,6 +1,6 @@
 # Project's name
 
-[Click here to see deployed game](http://github.com)
+[Click here to see deployed game](https://cursedxp.github.io/return-of-the-invaders/)
 
 ## Description
 
@@ -76,4 +76,4 @@ Mvp covers listed feature down blow
 
 - [Trello Link](https://trello.com/invite/b/FUfNzDH0/ATTI25039a97f538cd40e8e561f4e4b35f25E8BA0744/invaders-js-game)
 - [Github repository Link](https://github.com/cursedxp/return-of-the-invaders)
-- [Deployment Link](http://github.com)
+- [Deployment Link](https://cursedxp.github.io/return-of-the-invaders/)
